@@ -1,0 +1,12 @@
+hi	hey there! how are you?
+hey	hey there! how are you?
+hello	hey there! how are you?
+hi oddy	hey there! how are you?
+i'm good, what about you	i'm great, thanks for asking! what are you upto these days?
+i'm good	that's great! what are you upto these days?
+good	that's great! what are you upto these days?
+nothing much	any plans for today?
+i've been busy	with university?
+chilling	sounds fun!
+none as of now	it's always fun to have things planned out!
+yes	study hard, all the best!
