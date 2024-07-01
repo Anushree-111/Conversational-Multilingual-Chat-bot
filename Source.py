@@ -1,4 +1,5 @@
 from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
 from tkinter import *
 from googletrans import Translator, LANGUAGES
 import speech_recognition as sr
@@ -6,11 +7,37 @@ import speech_recognition as sr
 translator = Translator()
 bot = ChatBot("Oddy: The Bot")
 
+
+# Function to train the bot with dialogues from a text file
+def train_bot_from_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        dialogues = file.readlines()
+
+    conversation = []
+    for dialogue in dialogues:
+        question, answer = dialogue.strip().split('\t')
+        conversation.append(question)
+        conversation.append(answer)
+
+    trainer = ListTrainer(bot)
+    trainer.train(conversation)
+
+
+# Call the function to train the bot
+train_bot_from_file(r"C:\Users\anush\PycharmProjects\ML_chatbot\dialogs.txt")
+
+
 def translate_to_destination(text, dest_language):
+
+    # Check if the destination language is valid
     if dest_language not in LANGUAGES.values():
-        raise ValueError('Invalid destination language')
+        raise ValueError('Invalid destination language '+'\n')
+
+    # Perform translation
     translated = translator.translate(text, dest=dest_language)
     return translated.text
+
+
 
 def ask_from_bot():
     query = textF.get()
@@ -20,19 +47,24 @@ def ask_from_bot():
     print("Destination Language:", dest_language)
 
     try:
-        # Get translation of user's query
-        query_translated = translate_to_destination(query, dest_language)
+        # Get response from the bot
+        bot_response = bot.get_response(query).text
 
-        print("Translated Response:", query_translated)
+        # Translate bot's response to the destination language
+        translated_response = translate_to_destination(bot_response, dest_language)
+
+        print("Translated Response:", translated_response)
 
         msgs.insert(END, "you : " + str(query) + "\n", 'user_message')
-        msgs.insert(END, "bot : " + str(query_translated) + "\n", 'bot_message')  # Add "\n" for a new line
+        msgs.insert(END, "bot : " + str(translated_response) + "\n", 'bot_message')  # Display translated response
 
     except ValueError as e:
         msgs.insert(END, "Error: " + str(e))
 
     textF.delete(0, END)
     destLangEntry.delete(0, END)
+
+
 
 def speech_to_text():
     recognizer = sr.Recognizer()
@@ -51,6 +83,7 @@ def speech_to_text():
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
             msgs.insert(END, "Error: Could not request results from Google Speech Recognition service")
+
 
 main = Tk()
 main.geometry("500x650")
