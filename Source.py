@@ -24,7 +24,7 @@ def train_bot_from_file(file_path):
 
 
 # Call the function to train the bot
-train_bot_from_file(r"file_path")
+train_bot_from_file(r"enter_file_path")
 
 
 def translate_to_destination(text, dest_language):
