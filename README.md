@@ -10,9 +10,9 @@ A sample dataset for training has been added (dialog.txt), it consists of two co
 ------
 
 
-![image](https://github.com/Anushree-111/Multilingual-Conversational-Chat-bot/assets/166540329/5208047a-b115-41f5-af82-5049eba366e2)
+![](https://github.com/Anushree-111/Multilingual-Conversational-Chat-bot/assets/166540329/5208047a-b115-41f5-af82-5049eba366e2.png =250x250)
 
 
-![image](https://github.com/Anushree-111/Multilingual-Conversational-Chat-bot/assets/166540329/393e1ed1-3bfb-42ca-8e8a-d49f04cab11b)
+![](https://github.com/Anushree-111/Multilingual-Conversational-Chat-bot/assets/166540329/393e1ed1-3bfb-42ca-8e8a-d49f04cab11b)
 
 
